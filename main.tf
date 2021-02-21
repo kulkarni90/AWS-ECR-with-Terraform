@@ -4,17 +4,11 @@ provider aws {
   region = "ap-south-1" # change the region
 }
 
-terraform {
-  backend "s3" {
-    encrypt = true
-    bucket = "databucket"
-    region = "ap-south-1"
-    key = "tf.state"
-  }
+resource "aws_ecr_repository" "foo" {
+  name                 = "TEST-REPO"
+  image_tag_mutability = "MUTABLE"
   
-}
-
-module "image-registry" {
-    source = "github.com/" # your github repo link
-    ecr_names = var.ecr_names
+  image_scanning_configuration {
+          scan_on_push = true
+   }
 }
