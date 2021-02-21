@@ -1,7 +1,7 @@
 
 
 provider aws {
-  region = "ap-south-1" # change the region
+  region = "ap-southeast-1" # change the region
 }
 
 resource "aws_ecr_repository" "foo" {
